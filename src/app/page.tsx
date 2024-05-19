@@ -10,33 +10,28 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tiles } from "@/components/tiles";
-import { ITopEmployees, TopEmployees } from "@/components/top-employees";
+import { TopEmployees } from "@/components/top-employees";
+import { getData } from "./_actions/dashboard";
 
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Dashboard Page.",
 };
-export default function Home() {
-  const TOP_EMPLOYEES = [
-    {
-      current_score: 4.5,
-      email: "johndoe@gmail.com",
-      name: "John Doe",
-      title: "Customer Success Manager",
-    },
-    {
-      current_score: 4.5,
-      email: "sarahjohnson@gmail.com",
-      name: "Sarah Johnson",
-      title: "Senior Software Engineer",
-    },
-    {
-      current_score: 4.5,
-      email: "alexjohnson@gmail.com",
-      name: "Alex Johnson",
-      title: "Digital Marketing Specialist",
-    },
-  ] as ITopEmployees[];
+
+export default async function Home() {
+  const data = await getData();
+  const {
+    top_employees,
+    activity_hours,
+    average_employee_score,
+    in_progress_courses,
+    skills_in_development,
+    top_skills,
+    teams,
+    total_completed_courses,
+    total_employees,
+    upcoming_courses,
+  } = data.data;
 
   return (
     <>
@@ -50,18 +45,36 @@ export default function Home() {
               <TabsTrigger value="overview">Overview</TabsTrigger>
             </TabsList>
             <TabsContent value="overview" className="space-y-3">
-              <Tiles />
+              <Tiles
+                data={[
+                  {
+                    key: "total_employees",
+                    title: "Total Employees",
+                    value: total_employees,
+                  },
+                  {
+                    key: "average_employee_score",
+                    title: "Average Employee Score",
+                    value: average_employee_score,
+                  },
+                  {
+                    key: "total_completed_courses",
+                    title: "Total Completed Courses",
+                    value: total_completed_courses,
+                  },
+                ]}
+              />
 
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <Card className="col-span-3">
                   <CardHeader>
                     <CardTitle>Top Employees</CardTitle>
                     <CardDescription>
-                      There are {TOP_EMPLOYEES.length} top employees
+                      There are {top_employees.length} top employees
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <TopEmployees data={TOP_EMPLOYEES} />
+                    <TopEmployees data={top_employees} />
                   </CardContent>
                 </Card>
               </div>
