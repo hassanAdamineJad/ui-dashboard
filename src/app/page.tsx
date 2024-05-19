@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tiles } from "@/components/tiles";
 import { TopEmployees } from "@/components/top-employees";
 import { getData } from "./_actions/dashboard";
+import { OverviewTopSkills } from "@/components/overview-top-skills";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -21,13 +22,13 @@ export const metadata: Metadata = {
 export default async function Home() {
   const data = await getData();
   const {
-    top_employees,
     activity_hours,
     average_employee_score,
     in_progress_courses,
     skills_in_development,
-    top_skills,
     teams,
+    top_employees,
+    top_skills,
     total_completed_courses,
     total_employees,
     upcoming_courses,
@@ -66,6 +67,14 @@ export default async function Home() {
               />
 
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+                <Card className="col-span-4">
+                  <CardHeader>
+                    <CardTitle>Top Skills</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pl-2">
+                    <OverviewTopSkills data={top_skills} />
+                  </CardContent>
+                </Card>
                 <Card className="col-span-3">
                   <CardHeader>
                     <CardTitle>Top Employees</CardTitle>
