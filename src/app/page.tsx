@@ -1,18 +1,11 @@
 import { Metadata } from "next";
 
 // UI
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Tiles } from "@/components/tiles";
-import { TopEmployees } from "@/components/top-employees";
 import { getData } from "./_actions/dashboard";
-import { OverviewTopSkills } from "@/components/overview-top-skills";
+import { OverviewContent } from "@/components/overview-content";
+import { TeamsContent } from "@/components/team-content";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -44,49 +37,20 @@ export default async function Home() {
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="team">Team</TabsTrigger>
             </TabsList>
             <TabsContent value="overview" className="space-y-3">
-              <Tiles
-                data={[
-                  {
-                    key: "total_employees",
-                    title: "Total Employees",
-                    value: total_employees,
-                  },
-                  {
-                    key: "average_employee_score",
-                    title: "Average Employee Score",
-                    value: average_employee_score,
-                  },
-                  {
-                    key: "total_completed_courses",
-                    title: "Total Completed Courses",
-                    value: total_completed_courses,
-                  },
-                ]}
+              <OverviewContent
+                averageEmployeeScore={average_employee_score}
+                totalEmployees={total_employees}
+                totalCompletedCourses={total_completed_courses}
+                topSkills={top_skills}
+                topEmployees={top_employees}
               />
+            </TabsContent>
 
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <Card className="col-span-4">
-                  <CardHeader>
-                    <CardTitle>Top Skills</CardTitle>
-                  </CardHeader>
-                  <CardContent className="pl-2">
-                    <OverviewTopSkills data={top_skills} />
-                  </CardContent>
-                </Card>
-                <Card className="col-span-3">
-                  <CardHeader>
-                    <CardTitle>Top Employees</CardTitle>
-                    <CardDescription>
-                      There are {top_employees.length} top employees
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <TopEmployees data={top_employees} />
-                  </CardContent>
-                </Card>
-              </div>
+            <TabsContent value="team" className="space-y-3">
+              <TeamsContent teams={teams} />
             </TabsContent>
           </Tabs>
         </div>
