@@ -37,7 +37,8 @@ export default async function Home() {
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="team">Team</TabsTrigger>
+              <TabsTrigger value="teams">Teams</TabsTrigger>
+              <TabsTrigger value="courses">Courses</TabsTrigger>
             </TabsList>
             <TabsContent value="overview" className="space-y-3">
               <OverviewContent
@@ -46,11 +47,16 @@ export default async function Home() {
                 totalCompletedCourses={total_completed_courses}
                 topSkills={top_skills}
                 topEmployees={top_employees}
+                inProgressCourses={in_progress_courses.length}
+                upcomingCourses={upcoming_courses.length}
               />
             </TabsContent>
 
-            <TabsContent value="team" className="space-y-3">
+            <TabsContent value="teams" className="space-y-3">
               <TeamsContent teams={teams} />
+            </TabsContent>
+            <TabsContent value="courses" className="space-y-3">
+              <>Courses</>
             </TabsContent>
           </Tabs>
         </div>

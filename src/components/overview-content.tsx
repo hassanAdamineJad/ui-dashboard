@@ -15,6 +15,8 @@ interface IOverviewContent {
   totalEmployees: number;
   averageEmployeeScore: number;
   totalCompletedCourses: number;
+  upcomingCourses: number;
+  inProgressCourses: number;
   topEmployees: ITopEmployees[];
 }
 
@@ -24,6 +26,8 @@ export function OverviewContent({
   averageEmployeeScore,
   totalCompletedCourses,
   topEmployees,
+  upcomingCourses,
+  inProgressCourses,
 }: IOverviewContent) {
   return (
     <>
@@ -43,6 +47,16 @@ export function OverviewContent({
             key: "total_completed_courses",
             title: "Total Completed Courses",
             value: totalCompletedCourses,
+          },
+          {
+            key: "upcoming_courses",
+            title: "Upcoming Courses",
+            value: upcomingCourses,
+          },
+          {
+            key: "in_progress_courses",
+            title: "In Progress Courses",
+            value: inProgressCourses,
           },
         ]}
       />
