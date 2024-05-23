@@ -9,9 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import { ArrowUpRightIcon } from "lucide-react";
+
 import {
   Table,
   TableBody,
@@ -31,7 +29,7 @@ export interface IEmployee {
   title: string;
 }
 
-export interface ITeam {
+export interface TeamProps {
   description: string;
   title: string;
   overall_score: string;
@@ -39,8 +37,8 @@ export interface ITeam {
   employees: IEmployee[];
 }
 
-export function TeamsContent({ teams }: { teams: ITeam[] }) {
-  const [currentTeam, setCurrentTeam] = useState<ITeam>(teams[0]);
+export function TeamsContent({ teams }: { teams: TeamProps[] }) {
+  const [currentTeam, setCurrentTeam] = useState<TeamProps>(teams[0]);
   console.log({ currentTeam });
   return (
     <>

@@ -27,15 +27,15 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import { ITeam } from "./team-content";
+import { TeamProps } from "./team-content";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
 >;
 
 interface TeamSwitcherProps extends PopoverTriggerProps {
-  data: ITeam[];
-  setCurrentTeam: (a: ITeam) => void;
+  data: TeamProps[];
+  setCurrentTeam: (a: TeamProps) => void;
 }
 
 export default function TeamSwitcher({
@@ -45,7 +45,7 @@ export default function TeamSwitcher({
 }: TeamSwitcherProps) {
   const [open, setOpen] = React.useState(false);
   const [showNewTeamDialog, setShowNewTeamDialog] = React.useState(false);
-  const [selectedTeam, setSelectedTeam] = React.useState<ITeam>(data[0]);
+  const [selectedTeam, setSelectedTeam] = React.useState<TeamProps>(data[0]);
   console.log({ data });
   return (
     <Dialog open={showNewTeamDialog} onOpenChange={setShowNewTeamDialog}>

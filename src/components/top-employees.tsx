@@ -1,14 +1,14 @@
 "use client";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
-export interface ITopEmployees {
+export interface TopEmployeesProps {
   current_score: number;
   email: string;
   name: string;
   title: string;
 }
 
-export function TopEmployees({ data }: { data: ITopEmployees[] }) {
+export function TopEmployees({ data }: { data: TopEmployeesProps[] }) {
   return (
     <div className="space-y-8">
       {data?.map((item, key) => {

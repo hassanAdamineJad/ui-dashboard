@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getData } from "./_actions/dashboard";
 import { OverviewContent } from "@/components/overview-content";
 import { TeamsContent } from "@/components/team-content";
+import { CoursesContent } from "@/components/courses-content";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -56,7 +57,10 @@ export default async function Home() {
               <TeamsContent teams={teams} />
             </TabsContent>
             <TabsContent value="courses" className="space-y-3">
-              <>Courses</>
+              <CoursesContent
+                inProgressCourses={in_progress_courses}
+                upcomingCourses={upcoming_courses}
+              />
             </TabsContent>
           </Tabs>
         </div>

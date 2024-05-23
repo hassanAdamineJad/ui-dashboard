@@ -10,13 +10,17 @@ import {
   Legend,
 } from "recharts";
 
-export interface IOverviewTopSkills {
+export interface OverviewTopSkillsProps {
   skill: string;
   employees: number;
   employeeInDevelop: number;
 }
 
-export function OverviewTopSkills({ data }: { data: IOverviewTopSkills[] }) {
+export function OverviewTopSkills({
+  data,
+}: {
+  data: OverviewTopSkillsProps[];
+}) {
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data} width={500} height={300}>

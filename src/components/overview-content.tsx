@@ -1,7 +1,11 @@
 "use client";
-import { IOverviewTopSkills, OverviewTopSkills } from "./overview-top-skills";
+import {
+  OverviewTopSkillsProps as IOverviewTopSkills,
+  OverviewTopSkills,
+} from "./overview-top-skills";
+
 import { Tiles } from "./tiles";
-import { TopEmployees, ITopEmployees } from "./top-employees";
+import { TopEmployees, TopEmployeesProps } from "./top-employees";
 import {
   Card,
   CardContent,
@@ -10,14 +14,14 @@ import {
   CardTitle,
 } from "./ui/card";
 
-interface IOverviewContent {
+interface OverviewContentProps {
   topSkills: IOverviewTopSkills[];
   totalEmployees: number;
   averageEmployeeScore: number;
   totalCompletedCourses: number;
   upcomingCourses: number;
   inProgressCourses: number;
-  topEmployees: ITopEmployees[];
+  topEmployees: TopEmployeesProps[];
 }
 
 export function OverviewContent({
@@ -28,7 +32,7 @@ export function OverviewContent({
   topEmployees,
   upcomingCourses,
   inProgressCourses,
-}: IOverviewContent) {
+}: OverviewContentProps) {
   return (
     <>
       <Tiles
@@ -70,6 +74,7 @@ export function OverviewContent({
             <OverviewTopSkills data={topSkills} />
           </CardContent>
         </Card>
+
         <Card className="col-span-3">
           <CardHeader>
             <CardTitle>Top Employees</CardTitle>
