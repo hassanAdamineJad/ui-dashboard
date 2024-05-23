@@ -19,7 +19,6 @@ export interface ActivityHoursProps {
 }
 
 export function ActivityHours({ data }: { data: ActivityHoursProps[] }) {
-  console.log({ data });
   return (
     <ResponsiveContainer width="100%" height={400}>
       <BarChart data={data} width={500} height={300}>

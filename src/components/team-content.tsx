@@ -40,7 +40,6 @@ export interface TeamProps {
 
 export function TeamsContent({ teams }: { teams: TeamProps[] }) {
   const [currentTeam, setCurrentTeam] = useState<TeamProps>(teams[0]);
-  console.log({ currentTeam });
   return (
     <>
       <div className="hidden flex-col md:flex mt-8">
