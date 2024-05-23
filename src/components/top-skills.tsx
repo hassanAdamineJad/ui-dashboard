@@ -22,8 +22,8 @@ export function OverviewTopSkills({
   data: OverviewTopSkillsProps[];
 }) {
   return (
-    <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={data} width={500} height={300}>
+    <ResponsiveContainer width="100%" height={200}>
+      <BarChart data={data.sort((a, b) => b.employees - a.employees)}>
         <XAxis
           dataKey="skill"
           stroke="#888888"

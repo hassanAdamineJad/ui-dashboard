@@ -41,9 +41,7 @@ export function CoursesContent({
                 <TableRow>
                   <TableHead>Title</TableHead>
                   <TableHead>Assigned To</TableHead>
-
                   <TableHead>Due Date</TableHead>
-
                   <TableHead className="text-center">Status</TableHead>
                 </TableRow>
               </TableHeader>
@@ -59,7 +57,12 @@ export function CoursesContent({
                     <TableCell>{item.assigned_to}</TableCell>
                     <TableCell>{item.due_date}</TableCell>
                     <TableCell className="text-center">
-                      <Badge className="text-xs" variant="outline">
+                      <Badge
+                        className={`text-xs ${
+                          item.status === "In Progress" ? "bg-slate-300" : ""
+                        }`}
+                        variant="outline"
+                      >
                         {item.status}
                       </Badge>
                     </TableCell>

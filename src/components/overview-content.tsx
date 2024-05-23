@@ -2,7 +2,7 @@
 import {
   OverviewTopSkillsProps as IOverviewTopSkills,
   OverviewTopSkills,
-} from "./overview-top-skills";
+} from "./top-skills";
 
 import { Tiles } from "./tiles";
 import { TopEmployees, TopEmployeesProps } from "./top-employees";
@@ -13,8 +13,15 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { ActivityHours } from "./activity-hours";
 
 interface OverviewContentProps {
+  activityHours: {
+    date: string;
+    exams_completed: number;
+    hours: number;
+    lessons_taken: number;
+  }[];
   topSkills: IOverviewTopSkills[];
   totalEmployees: number;
   averageEmployeeScore: number;
@@ -25,6 +32,7 @@ interface OverviewContentProps {
 }
 
 export function OverviewContent({
+  activityHours,
   topSkills,
   totalEmployees,
   averageEmployeeScore,
@@ -53,19 +61,29 @@ export function OverviewContent({
             value: totalCompletedCourses,
           },
           {
-            key: "upcoming_courses",
-            title: "Upcoming Courses",
-            value: upcomingCourses,
-          },
-          {
             key: "in_progress_courses",
             title: "In Progress Courses",
             value: inProgressCourses,
+          },
+          {
+            key: "upcoming_courses",
+            title: "Upcoming Courses",
+            value: upcomingCourses,
           },
         ]}
       />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+        <Card className="col-span-7">
+          <CardHeader>
+            <CardTitle>Activity Hours</CardTitle>
+            <CardDescription></CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ActivityHours data={activityHours} />
+          </CardContent>
+        </Card>
+
         <Card className="col-span-4">
           <CardHeader>
             <CardTitle>Top Skills</CardTitle>

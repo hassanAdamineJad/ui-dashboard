@@ -43,6 +43,7 @@ export default async function Home() {
             </TabsList>
             <TabsContent value="overview" className="space-y-3">
               <OverviewContent
+                activityHours={activity_hours}
                 averageEmployeeScore={average_employee_score}
                 totalEmployees={total_employees}
                 totalCompletedCourses={total_completed_courses}

@@ -11,17 +11,12 @@ export interface TopEmployeesProps {
 export function TopEmployees({ data }: { data: TopEmployeesProps[] }) {
   return (
     <div className="space-y-8">
-      {data?.map((item, key) => {
+      {data.map((item, key) => {
         return (
           <div className="flex items-center" key={key}>
             <Avatar className="h-9 w-9">
               <AvatarFallback>
-                {item.name
-                  .match(/(\b\S)?/g)
-                  .join("")
-                  .match(/(^\S|\S$)?/g)
-                  .join("")
-                  .toUpperCase()}
+                {item.name.split(" ")[0].charAt(0).toUpperCase()}
               </AvatarFallback>
             </Avatar>
             <div className="ml-4 space-y-1">
