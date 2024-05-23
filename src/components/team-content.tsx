@@ -19,6 +19,7 @@ import {
   TableRow,
 } from "./ui/table";
 import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
 
 export interface IEmployee {
   current_score: number;
@@ -42,21 +43,30 @@ export function TeamsContent({ teams }: { teams: TeamProps[] }) {
   console.log({ currentTeam });
   return (
     <>
-      <div className="hidden flex-col md:flex">
-        <div className="border-b">
-          <div className="flex h-16 items-center px-4">
+      <div className="hidden flex-col md:flex mt-8">
+        <div>
+          <div className="flex h-8 items-center">
             <TeamSwitcher data={teams} setCurrentTeam={setCurrentTeam} />
           </div>
         </div>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7 ">
         <Card className="col-span-7">
-          <CardHeader className="flex flex-row items-center">
-            <div className="grid gap-8">
+          <CardHeader className="flex flex-row items-start border-b">
+            <div className="grid gap-2">
               <CardTitle>{currentTeam.title}</CardTitle>
-              <CardDescription>{currentTeam.description}</CardDescription>
+              <CardDescription className="text-justify">
+                {currentTeam.description}
+              </CardDescription>
             </div>
           </CardHeader>
+          <CardHeader className="flex flex-row items-center">
+            <CardTitle>Employees</CardTitle>
+            <Button size="sm" className="ml-auto gap-1">
+              Add Employee
+            </Button>
+          </CardHeader>
+
           <CardContent>
             <Table>
               <TableHeader>
